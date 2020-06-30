@@ -22,55 +22,44 @@
                     <h4>Participez en quelques secondes</h4>
                 </div>
             </div>
-            <!--   Form Section   -->
+            <!-- Form Section -->
             <div class="card">
                 <div class="card-content">
                     <div class="row">
-                        <form>
+                        <form  id="payment-form" method="post" action=""  >
+                            <input type="hidden" name="campaign_id" value="" >
                             <h5 class="center">Votre identité</h5>
                             <div class="input-field col s12 l6">
-                                <input id="email" type="email" class="validate">
+                                <input id="email" name="email" type="email" class="validate">
                                 <label for="email">Votre Email</label>
                             </div>
                             <div class="input-field col s12 l6">
-                                <input id="mount" type="number" class="validate">
-                                <label for="mount">Votre participation</label>
+                                <input id="name" name="name" type="text" class="validate">
+                                <label for="name">Votre nom</label>
                             </div>
-                            <p>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Masquer mon identité auprès des autres participants</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Masquer le montant de ma participation auprès des autres participants</span>
-                                </label>
-                            </p>
+                            <div class="input-field col s12 l6">
+                                <input id="amount" name="amount" type="number" class="validate" value=""  >
+                                <label for="amount">Votre participation</label>
+                            </div>
+
                             <div class="clearfix"></div>
                             <h5 class="center">Paiement</h5>
-                            <div class="input-field col s12">
-                                <input id="card_name" type="text" class="validate">
-                                <label for="card_name">Nom sur la carte</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="card_number" type="text" class="validate">
-                                <label for="card_number">Numéro de la carte</label>
-                            </div>
-                            <div class="input-field col s12 l8">
-                                <input id="card_expiration_date" type="date" class="validate">
-                                <label for="card_expiration_date">Date d'expiration</label>
-                            </div>
-                            <div class="input-field col s12 l4">
-                                <input id="card_cvv" type="text" class="validate">
-                                <label for="card_cvv">CVV</label>
+                            <div class="form-row">
+                                <label for="card-element">
+                                    Credit or debit card
+                                </label>
+                                <div id="card-element">
+                                    <!-- A Stripe Element will be inserted here. -->
+                                </div>
+
+                                <!-- Used to display Element errors. -->
+                                <div id="card-errors" role="alert"></div>
                             </div>
                             <div class="input-field col s12 l6">
                                 <a href="#!" class="btn btn-large waves-effect waves-light grey col s12">Annuler</a>
                             </div>
                             <div class="input-field col s12 l6">
-                                <button class="btn btn-large waves-effect waves-light pink lighten-1 col s12" type="submit" name="action">
+                                <button class="btn btn-large waves-effect waves-light pink lighten-1 col s12" type="submit">
                                     Participer
                                     <i class="material-icons right">euro_symbol</i>
                                 </button>

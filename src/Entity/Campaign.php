@@ -13,13 +13,22 @@ use Doctrine\ORM\Mapping as ORM;
 class Campaign
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="id", type="string", length=32, nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
+    * @var string
+    *
+    * @ORM\Column(name="id", type="string", length=32, nullable=false)
+    * @ORM\Id
+    * @ORM\GeneratedValue(strategy="NONE")
+    */
     private $id;
+
+    public function setId(): self
+    {    
+    $id = md5(random_bytes(50));
+    $this->id = $id;
+
+    return $this;
+    }
+
 
     /**
      * @var string|null
