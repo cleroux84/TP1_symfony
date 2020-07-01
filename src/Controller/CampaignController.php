@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Campaign;
-use App\Form\CampaignType;
+use App\Form\Campaign1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,18 +34,17 @@ class CampaignController extends AbstractController
     public function new(Request $request): Response
     {
         $campaign = new Campaign();
-        $form = $this->createForm(CampaignType::class, $campaign);
+        $form = $this->createForm(Campaign1Type::class, $campaign);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
             $campaign->setId(); //il faut définir l'id de la campagne !
-            $em->persist($campaign);
-            $em->flush();
-        
-              return $this->redirectToRoute('campaign_show', ['id' => $campaign->getId()]);
+            $entityManager->persist($campaign);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('campaign_index');
         }
-        
 
         return $this->render('campaign/new.html.twig', [
             'campaign' => $campaign,
@@ -68,7 +67,7 @@ class CampaignController extends AbstractController
      */
     public function edit(Request $request, Campaign $campaign): Response
     {
-        $form = $this->createForm(CampaignType::class, $campaign);
+        $form = $this->createForm(Campaign1Type::class, $campaign);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
