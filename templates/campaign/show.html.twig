@@ -38,9 +38,14 @@
         </tbody>
     </table>
 
-    <a href="{{ path('campaign_index') }}">back to list</a>
+    <a href="{{ path('campaign_index') }}"><button class="btn">Back to List
+    </button></a>
 
-    <a href="{{ path('campaign_edit', {'id': campaign.id}) }}">edit</a>
+    <a href="{{ path('campaign_edit', {'id': campaign.id}) }}"><button class="btn">Edit
+    </button></a>
+
+    <a href="{{ path('payment', {'id': campaign.id}) }}"><button class="btn">Participate
+    </button></a>
 
     {{ include('campaign/_delete_form.html.twig') }}
 {% endblock %}
