@@ -32,23 +32,20 @@ class PaymentController extends AbstractController
    public function newPayment(Request $request, Campaign $campaign): Response
     {
         $participant = new Participant();
-        $payments = new Payment;
         $amount = $request->request->get('amount');
         $entityManager = $this->getDoctrine()->getManager();
-        
-        $id_campaign = $request->request->get('campaign_id');
+
+
         $name = $request->request->get('name');
         $email = $request->request->get('email');
         
-        
-        
         $participant->setName($name)
-        ->setEmail($email)
-        ->setCampaign($campaign);
-        
+                    ->setEmail($email)
+                    ->setCampaign($campaign);
         $entityManager->persist($participant);
         $entityManager->flush();  
-
+        
+        $payments = new Payment();
         $amount = $request->request->get('amount');
         $payments->setAmount($amount)
                 ->setParticipant($participant)

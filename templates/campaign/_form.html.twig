@@ -1,4 +1,19 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div>
+    <label for="title">Title</label>
+    {{ form_widget(form.title) }}
+</div>
+<div>
+    <label for="content">Content</label>
+    {{ form_widget(form.content) }}
+</div>
+<div>
+    <label for="goal">Goal</label>
+    {{ form_widget(form.goal) }}
+</div>
+<div>
+    <label for="name">Name</label>
+    {{ form_widget(form.name, { 'attr' : { 'value' : nameCampaign }}) }}
+    </div>
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

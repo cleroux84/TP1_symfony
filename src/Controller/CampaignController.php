@@ -33,6 +33,7 @@ class CampaignController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $nameCampaign = $request->request->get('nameCampaign');
         $campaign = new Campaign();
         $form = $this->createForm(Campaign1Type::class, $campaign);
         $form->handleRequest($request);
@@ -49,6 +50,7 @@ class CampaignController extends AbstractController
         return $this->render('campaign/new.html.twig', [
             'campaign' => $campaign,
             'form' => $form->createView(),
+            'nameCampaign' => $nameCampaign
         ]);
     }
 
