@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Campaign;
+use App\Entity\Participant;
 use App\Form\Campaign1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,8 +60,16 @@ class CampaignController extends AbstractController
      */
     public function show(Campaign $campaign): Response
     {
+        $participants = $this->getDoctrine()
+        ->getRepository(Participant::class)
+        ->findBy(["campaign"=>$campaign]);
+        $participantCount=count($participants);
+       
+
         return $this->render('campaign/show.html.twig', [
             'campaign' => $campaign,
+            'participantCount' => $participantCount
+
         ]);
     }
 

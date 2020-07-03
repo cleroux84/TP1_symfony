@@ -18,11 +18,14 @@ class PaymentController extends AbstractController
     /**
      * @Route("/payment/{id}", name="payment")
      */
-   public function index(Campaign $campaign): Response
+   public function index(Request $request, Campaign $campaign): Response
     {
+        $amount = $request->request->get('amount');
+     
         return $this->render('campaign/payment.html.twig', [
             'controller_name' => 'PaymentController',
             'campaign' => $campaign,
+            'amount' => $amount,
             ]);
     }   
 
@@ -55,6 +58,10 @@ class PaymentController extends AbstractController
             
         return $this->redirectToRoute('campaign_index');;
     } 
+/**
+     * @Route("/campaign/{id}", name="campaigneuh")
+     */
+
 }
 
 /**

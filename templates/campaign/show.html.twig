@@ -29,11 +29,13 @@
             <div class="row">
                 <div class="card col s12 m12 l8 offset-l2">
                     <div class="card-content">
+                        <form method="POST" action="{{ path('payment', {'id': campaign.id}) }}">
                         <div class="input-field col s12 l6">
-                            <input id="amount" type="number" class="validate" value="">
+                            <input id="amount" type="number" class="validate" name="amount">
                             <label for="amount">Votre participation</label>
                         </div>
-                        <a href="{{ path('payment', {'id': campaign.id}) }}" class="btn-large waves-effect waves-light pink lighten-1 col s12 l6">Participer</a>
+                        <button type="submit" class="btn btn-primary" class="btn-large waves-effect waves-light pink lighten-1 col s12 l6">Participer</button>
+                        </form>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -48,7 +50,7 @@
                 <div class="col s12 m6 l3 offset-l3">
                     <div class="icon-block center">
                         <div class="btn-large btn-floating white"><i class="material-icons teal-text">person</i></div>
-                        <h3 class="center">12</h3>
+                        <h3 class="center">{{ participantCount }}</h3> 
                         <p class="light">Participants</p>
                     </div>
                 </div>
