@@ -97,18 +97,14 @@
                         </thead>
 
                         <tbody>
+                        {% for participant in participants %}
+                        {% for payment in payments %}
                         <tr>
-                            <td>Alvin@live.net</td>
-                            <td>5€</td>
+                            <td>{{ participant.email }}</td>
+                            <td>{{ payment.amount }}</td>
                         </tr>
-                        <tr>
-                            <td>Alan@live.net</td>
-                            <td>12€</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan@live.net</td>
-                            <td>7€</td>
-                        </tr>
+                        {% endfor %}
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
