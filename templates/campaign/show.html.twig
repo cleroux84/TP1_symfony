@@ -58,7 +58,7 @@
                 <div class="col s12 m6 l3">
                     <div class="icon-block center">
                         <div class="btn-large btn-floating white"><i class="material-icons teal-text">redeem</i></div>
-                        <h3 class="center">220</h3>
+                        <h3 class="center">{{ amountTotal }}</h3>
                         <p class="light">euros récoltés</p>
                     </div>
                 </div>
@@ -97,13 +97,11 @@
                         </thead>
 
                         <tbody>
-                        {% for participant in participants %}
                         {% for payment in payments %}
                         <tr>
-                            <td>{{ participant.email }}</td>
+                            <td>{{ payment.participant.email }}</td>
                             <td>{{ payment.amount }}</td>
                         </tr>
-                        {% endfor %}
                         {% endfor %}
                         </tbody>
                     </table>

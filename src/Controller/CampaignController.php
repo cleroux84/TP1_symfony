@@ -69,13 +69,21 @@ class CampaignController extends AbstractController
        
         $payments = $this->getDoctrine()
         ->getRepository(Payment::class)
-        ->findAll();
+        ->findBy(["participant"=>$participants]);
+
+
+        $amountTotal = 0;
+        foreach($payments as $payment)
+        {
+           $amountTotal += $payment->getAmount(); 
+        }
 
         return $this->render('campaign/show.html.twig', [
             'campaign' => $campaign,
             'participantCount' => $participantCount,
             'participants' => $participants,
-            'payments' => $payments
+            'payments' => $payments,
+            'amountTotal' => $amountTotal
 
         ]);
     }
