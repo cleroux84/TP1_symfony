@@ -71,19 +71,22 @@ class CampaignController extends AbstractController
         ->getRepository(Payment::class)
         ->findBy(["participant"=>$participants]);
 
-
+//sommes des participations
         $amountTotal = 0;
         foreach($payments as $payment)
         {
            $amountTotal += $payment->getAmount(); 
         }
 
+        $pourcentage = round(($amountTotal/$campaign->getGoal())*100);
+
         return $this->render('campaign/show.html.twig', [
             'campaign' => $campaign,
             'participantCount' => $participantCount,
             'participants' => $participants,
             'payments' => $payments,
-            'amountTotal' => $amountTotal
+            'amountTotal' => $amountTotal,
+            'pourcentage' => $pourcentage
 
         ]);
     }

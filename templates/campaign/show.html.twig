@@ -19,7 +19,7 @@
     <!-- Show progress -->
     <section class="progress-section">
         <div class="progress">
-            <div class="determinate" style="width: 70%"><span>70% de l'objectif</span></div>
+            <div class="determinate" style="width: {{ pourcentage }}%"><span>{{ pourcentage }}% de l'objectif</span></div>
         </div>
     </section>
 
@@ -68,10 +68,10 @@
                 <form>
                     <div class="input-field col s12">
                         <label for="description">Description</label>
-                        <textarea id="description" class="materialize-textarea" readonly="readonly">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo.</textarea>
+                        <textarea id="description" class="materialize-textarea" readonly="readonly">{{ campaign.content }}</textarea>
                     </div>
                     <div class="input-field col s12 l6">
-                        <input id="goal" type="number" readonly="readonly" value="500">
+                        <input id="goal" type="number" readonly="readonly" value="{{ campaign.goal }}">
                         <label for="goal">Objectif</label>
                     </div>
                     <div class="col s12 l6 offset-l3">
