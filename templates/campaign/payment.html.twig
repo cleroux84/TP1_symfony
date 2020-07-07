@@ -15,7 +15,7 @@
                 <div class="card-content">
                     <div class="row">
                         <form  id="payment-form" method="post" action="{{ path('payment_send', {'id': campaign.id}) }}"  >
-                            <input type="hidden" name="campaign_id" value="{{campaign.id}}" 
+                            <input type="hidden" name="campaign_id" value="{{campaign.id}}">
                             <h5 class="center">Votre identité</h5>
                             <div class="input-field col s12 l6">
                                 <input id="email" name="email" type="email" class="validate">
@@ -25,11 +25,18 @@
                                 <input id="name" name="name" type="text" class="validate">
                                 <label for="name">Votre nom</label>
                             </div>
+                       {% if amount>0 %}
                             <div class="input-field col s12 l6">
                                 <input id="amount" name="amount" type="number" class="validate" value="{{amount}}" >
                                 <label for="amount">Votre participation</label>
                             </div>
-
+                        {% else %}
+                        Veuillez entrer un montant supérieur à 0 !
+                        <div class="input-field col s12 l6">
+                                <input id="amount" name="amount" type="number" class="validate" value="{{amount}}" >
+                                <label for="amount">Votre participation</label>
+                            </div>
+                            {% endif %}
                             <div class="clearfix"></div>
                             <h5 class="center">Paiement</h5>
                             <div class="form-row">
@@ -39,7 +46,7 @@
                                 <div id="card-element">
                                     <!-- A Stripe Element will be inserted here. -->
                                 </div>
-
+                                
                                 <!-- Used to display Element errors. -->
                                 <div id="card-errors" role="alert"></div>
                             </div>
