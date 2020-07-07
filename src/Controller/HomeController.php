@@ -24,13 +24,13 @@ class HomeController extends AbstractController
         ->getRepository(Participant::class)
         ->findBy(["campaign"=>$campaigns]);
         
-   foreach($campaigns as $campaign){
+  /*  foreach($campaigns as $campaign){ */
         $participantCount=count($participants);
-     /*    dd($participantCount);       
-   */}
+ /*   } */
         $payments = $this->getDoctrine()
         ->getRepository(Payment::class)
         ->findAll();
+       
       
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -39,6 +39,6 @@ class HomeController extends AbstractController
             'participantCount'=>$participantCount
         ]);
       
-    }
+    }   
 
 }

@@ -41,16 +41,26 @@ class PaymentController extends AbstractController
 
         $name = $request->request->get('name');
         $email = $request->request->get('email');
-        $participant->setName($name)
-                    ->setEmail($email)
-                    ->setCampaign($campaign);
-        $entityManager->persist($participant);
-        $entityManager->flush();  
+        $anonymat = $request->request->get('anonymat');
         
+        if($anonymat === "on")
+        {
+            $participant->setCampaign($campaign);
+            $entityManager->persist($participant);
+            $entityManager->flush();  
+        }
+        else{
+            $participant->setName($name)
+            ->setEmail($email)
+            ->setCampaign($campaign);
+            $entityManager->persist($participant);
+            $entityManager->flush();  
+
+        }
+                 
         $payments = new Payment();
         $amount = $request->request->get('amount');
       
-
         if($amount > 0)
         {
         $payments->setAmount($amount)
@@ -58,13 +68,25 @@ class PaymentController extends AbstractController
                 ->setCreatedAt(new \DateTime());
         $entityManager->persist($payments);
         $entityManager->flush();  
+        return $this->redirectToRoute('campaign_index');
         }
         else{
-           dd($amount);
+        
+            $email = $request->request->get('email');
+            $name = $request->request->get('name');
+            
+            echo "<script>alert(\"Vous devez entrer un montant supérieur à 0\")</script>";
+            return $this->render('campaign/payment.html.twig', [
+                'controller_name' => 'PaymentController',
+                'campaign' => $campaign,
+                'amount' => $amount,
+                'email' => $email,
+                'name' => $name,
+                ]);
+        /*     echo '<INPUT type="button" value="back" onClick="window.history.back()">'; */
            
         }
             
-        return $this->redirectToRoute('campaign_index');
     } 
 
    
