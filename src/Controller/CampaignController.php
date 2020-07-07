@@ -110,6 +110,26 @@ class CampaignController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+ /**
+     * @Route("/{id}/editContent", name="campaign_editContent", methods={"GET","POST"})
+     */
+    public function editContent(Campaign $campaign, Request $request): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+    
+        $contentEdit = $request->request->get('contentEdit');
+
+    
+       
+        $campaign->setContent($contentEdit)
+                    ->setUpdatedAt(new \DateTime());
+                    
+        $entityManager->persist($campaign);
+        $entityManager->flush(); 
+
+        return $this->redirectToRoute('campaign_index');
+        
+    }
 
     /**
      * @Route("/{id}", name="campaign_delete", methods={"DELETE"})

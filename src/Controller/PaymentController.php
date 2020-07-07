@@ -60,10 +60,11 @@ class PaymentController extends AbstractController
         $entityManager->flush();  
         }
         else{
-            dd($amount);
+           dd($amount);
+           
         }
             
-        return $this->redirectToRoute('campaign_index');;
+        return $this->redirectToRoute('campaign_index');
     } 
 
    

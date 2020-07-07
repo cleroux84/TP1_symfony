@@ -70,10 +70,10 @@
             </div>
             <!-- Form section -->
             <div class="row">
-                <form>
+               <form  method="post" action="{{ path('campaign_editContent', {'id': campaign.id}) }}"  >
                     <div class="input-field col s12">
                         <label for="description">Description</label>
-                        <textarea id="description" class="materialize-textarea" readonly="readonly">{{ campaign.content }}</textarea>
+                        <textarea id="description" class="materialize-textarea" name="contentEdit">{{ campaign.content }}</textarea>
                     </div>
                     <div class="input-field col s12 l6">
                         <input id="goal" type="number" readonly="readonly" value="{{ campaign.goal }}">
