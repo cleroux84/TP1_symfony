@@ -24,6 +24,7 @@ class CampaignController extends AbstractController
         $campaigns = $this->getDoctrine()
             ->getRepository(Campaign::class)
             ->findAll();
+            
 
         return $this->render('campaign/index.html.twig', [
             'campaigns' => $campaigns,
@@ -110,15 +111,14 @@ class CampaignController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
  /**
      * @Route("/{id}/editContent", name="campaign_editContent", methods={"GET","POST"})
      */
     public function editContent(Campaign $campaign, Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-    
         $contentEdit = $request->request->get('contentEdit');
-
     
        
         $campaign->setContent($contentEdit)
