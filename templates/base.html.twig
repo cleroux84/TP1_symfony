@@ -13,6 +13,7 @@
     <!--Custom styles-->
     <link type="text/css" rel="stylesheet" href="{{asset("assets/css/styles.css")}}"  media="screen,projection"/>
     {% block stylesheets %}{% endblock %}
+    <script src="https://js.stripe.com/v3/"></script>
 
     <title>Cagnot'potes</title>
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -37,6 +38,7 @@
             </div>
         </nav>
     </div>
+    
     {# end navbar #}
 {% endblock %}
 
